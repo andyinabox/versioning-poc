@@ -15,15 +15,14 @@ module.exports = function(grunt) {
 		}
 	});
 
-
+	// load tasks
 	grunt.loadNpmTasks('grunt-release');
 	grunt.loadNpmTasks('grunt-checkbranch');
 
 	// renaming so that we can add tasks before
 	grunt.renameTask('release', 'imprint-release');
 
-	grunt.renameTask('release', 'imprint-release');
-
+	// setup custom tasks
 	grunt.registerTask('build', []);
 	grunt.registerTask('default', ['build']);
 	grunt.registerTask('release-prep', ['checkbranch:master', 'build']);
