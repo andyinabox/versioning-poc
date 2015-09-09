@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 				changelog: true
 				, npm: false
 				, additionalFiles: ['bower.json']
-				, beforeBump: ['checkbranch']
+				, beforeBump: []
 				, afterBump: []
 				, beforeRelease: []
 				, afterRelease: []
