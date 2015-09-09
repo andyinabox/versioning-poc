@@ -17,6 +17,7 @@ module.exports = function(grunt) {
 
 
 	grunt.loadNpmTasks('grunt-release');
+	grunt.loadNpmTasks('grunt-checkbranch');
 
 
 	grunt.registerTask('build', []);
