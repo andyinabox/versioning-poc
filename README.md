@@ -13,11 +13,13 @@ with
 
 whenever you are pushing non-WIP code. This will handle the following tasks:
 
- 1. Running any build tasks
- 2. Bumping the version using [semver](http://semver.org/)
- 3. Committing code in your working copy
- 4. Tagging with the current version
- 5. Pushing the current branch and tags to GitHub
+ 1. Check to make sure you are in `master` branch
+ 2. Run any build tasks
+ 3. Bumping the version using [semver](http://semver.org/)
+ 4. Committing code in your working copy
+ 5. Tagging with the current version
+ 6. Duplicate tag into `stable` branch
+ 7. Pushing the current branch and tags to GitHub
 
 Additionally, you can specify what kind of version you are releasing:
 
