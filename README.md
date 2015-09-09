@@ -73,7 +73,6 @@ We can set our policy based on the [NPM semvar spec for consumers](https://www.n
 
 ```json
  dependencies: {
- 		// ...
 		"imprint-web-common": "1.0.x",
  }
 ```
@@ -83,7 +82,6 @@ If we're doing more active development, we might want to simply set our policy a
 
 ```json
  dependencies: {
- 		// ...
 		"imprint-web-common": "*",
  }
 ```
