@@ -28,4 +28,5 @@ module.exports = function(grunt) {
 		var taskName = sub ? 'bump:'+sub : 'bump';
 		grunt.task.run(['before-release', taskName, 'after-release']);
 	});
-}
+};
+

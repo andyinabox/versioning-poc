@@ -3,6 +3,8 @@ Imprint Versioning POC
 
 A quick POC to develop a versioning model for Imprint. Some additionl notes can also be found [on the confluence wiki](https://imprint.atlassian.net/wiki/display/~andydayton/%2378%3A+SPIKE%3A+explicit+control+between+imprint-web-common+version+and+imprint+and+imprint-mobile+releases).
 
+The Grunt workflow itself is fairly simple, and can be found in `Gruntfile.js` above. It depends upon [grunt-bump](https://github.com/vojtajina/grunt-bump) and [grunt-checkbranch](https://github.com/dominykas/grunt-checkbranch). This repository uses it to manage versioning, so you can checkout this repo if you want to test it out.
+
 Overview
 --------
 
