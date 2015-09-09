@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 	// setup custom tasks
 	grunt.registerTask('build', []);
 	grunt.registerTask('default', ['build']);
-	grunt.registerTask('release-prep', ['build']);
+	grunt.registerTask('release-prep', ['checkbranch:master', 'build']);
 
 	// release task aliases
 	grunt.registerTask('release', ['release-prep', 'bump']);
