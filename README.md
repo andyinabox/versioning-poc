@@ -1,7 +1,7 @@
 Imprint Versioning POC
 ======================
 
-A quick POC to develop a versioning model for Imprint. 
+A quick POC to develop a versioning model for Imprint. Some additionl notes can also be found [on the confluence wiki](https://imprint.atlassian.net/wiki/display/~andydayton/%2378%3A+SPIKE%3A+explicit+control+between+imprint-web-common+version+and+imprint+and+imprint-mobile+releases.
 
 Overview
 --------
@@ -14,14 +14,14 @@ with
 
     grunt release
 
-whenever you are pushing any changes to the master branch. This command handles the following tasks:
+whenever you are pushing any changes to the `master` branch, in a way that is standardized across our repos. This `grunt release` command handles the following tasks:
 
  1. Check to make sure you are in `master` branch
  2. Run any build tasks
- 3. Bump the version using [semver](http://semver.org/) versioning
- 4. Committing code in your working copy
- 5. Tagging with the current version
- 6. Pushing the current branch and tags to GitHub
+ 3. Bump the version using [Semantic Versioning](http://semver.org/)
+ 4. Commit the code in your working copy
+ 5. Tag with the current version
+ 6. Push the current branch and tags to GitHub
 
 Additionally, you can specify what kind of version you are releasing:
 
@@ -32,27 +32,50 @@ Additionally, you can specify what kind of version you are releasing:
     # (same as grunt release:patch)
     # => 0.0.2
 
-will increment the patch-level versioning digit (n.n.n+1)
-
-    # at 0.0.2
-
     $ grunt release:minor
 
     # => 0.2.0
 
-will increment the minor-level versioning digit (n.n+1.n)
+    $ grunt release:premajor
 
-    # at 0.2.0
+    # => 1.0.0-rc.0
 
     $ grunt release:major
 
     # => 1.0.0
 
-will increment the major-level versioning digit (n+1.n.n)
+There are more options documented in the [`grunt-bump` README](https://github.com/vojtajina/grunt-bump).
 
 
 Workflow
 --------
 
+Much of the workflow can be the same as it is currently: working in various feature branches and (at least in the case of the desktop) merge into an `integration` branch for QA. This strategy applies exclusively to changes in the `master` branch, with the assumption that `master` = production in all cases.
+
+This is less relevant for the desktop site, where releases are already pretty closely managed -- but moreso in the `imprint-mobile` and `imprint-web-common` projects where more development is happening in `master` and we aren't really tracking versions currently.
+
+The basic workflow would be:
+
+ 1. Merge changes into `master`
+ 2. Test locally
+ 3. Run `grunt release`
+ 4. Deploy to appropriate env
+
+
+Evaluation
+---------- 
+
+### Pros
+
+  * Ensures that we keep an explicit version history for every push to master, and that each version has a corresponding tag.
+  * Ensures that tags are only committed from `master` branch
+  * Updates our versioning standard to use Semantic Versioning, which provides more information & is a common standard
+  * Automates the commit/tag/push workflow to make things a little easier
+
+
+### Cons
+
+ * Only works if devs follow the rules (i.e. don't just run `git push master`)
+ * Doesn't fully address the issue of managing versions for sub-dependencies, like managing which version of `imprint-web-common` is included within the desktop and mobile sites (only gives us handy tags & versions to aid in that process)
 
 
