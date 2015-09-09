@@ -77,5 +77,7 @@ Evaluation
 
  * Only works if devs follow the rules (i.e. don't just run `git push master`)
  * Doesn't fully address the issue of managing versions for sub-dependencies, like managing which version of `imprint-web-common` is included within the desktop and mobile sites (only gives us handy tags & versions to aid in that process)
+ * Current implementation requires double login for deploying branch/tags (annoying)
+ * Could result in excessive number of tags (not sure if that really is a problem?)
 
 
