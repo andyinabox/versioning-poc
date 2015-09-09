@@ -24,8 +24,8 @@ Additionally, you can specify what kind of version you are releasing:
     # at 0.0.1
 
     $ grunt release
-    $ grunt release:patch
-
+    
+    # (same as grunt release:patch)
     # => 0.0.2
 
 will increment the patch-level versioning digit (n.n.n+1)
