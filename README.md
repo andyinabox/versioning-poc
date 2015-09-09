@@ -14,7 +14,7 @@ with
 
     grunt release
 
-whenever you are pushing non-WIP code. This will handle the following tasks:
+whenever you are pushing any changes to the master branch. This command handles the following tasks:
 
  1. Check to make sure you are in `master` branch
  2. Run any build tasks
