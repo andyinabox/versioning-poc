@@ -3,8 +3,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		'imprint-release': {
 			options: {
-				changelog: true
-				, npm: false
+				npm: false
 				, additionalFiles: ['bower.json']
 				, beforeBump: []
 				, afterBump: []
