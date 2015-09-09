@@ -54,29 +54,40 @@ There are more options documented in the [grunt-bump docs](https://github.com/vo
 Workflow
 --------
 
-### Managing Each Repo
+### Managing Repositories
 
-Much of the workflow can be the same as it is currently: working in various feature branches and (at least in the case of the desktop) merge into an `integration` branch for QA. This strategy applies exclusively to changes in the `master` branch, with the assumption that `master` = production in all cases.
+Much of the workflow can be the same as it is currently: working in various feature branches and (at least in the case of the desktop) merge into an `integration` branch for QA. This versioning strategy applies exclusively to changes in the `master` branch, with the assumption that `master` = production in all cases.
 
-This is less relevant for the desktop site, where releases are already pretty closely managed -- but moreso in the `imprint-mobile` and `imprint-web-common` projects where more development is happening in `master` and we aren't really tracking versions currently.
+This is less relevant for the desktop site, where releases are already pretty closely managed -- but moreso in the mobile and web-common repos where more development is happening in `master` and we aren't really tracking versions closely.
 
 The basic workflow would be:
 
- 1. Merge changes into `master`
+ 1. Merge changes into `master` (unless you're already working in master)
  2. Test locally
  3. Run `grunt release`
- 4. Deploy to appropriate env
+ 4. Deploy to appropriate env (staging for QA, or production for a finished release)
 
 ### Managing Dependencies
 
-We can set our policy based on the [NPM semvar spec for consumers](https://www.npmjs.com/package/npm-check-updates).
-
-For instance, in the imprint desktop `package.json` we might set our dependency:
+We can set our policy based on the [NPM semvar spec for consumers](https://www.npmjs.com/package/npm-check-updates). For instance, in the imprint desktop `package.json` we might set our dependency:
 
 ```json
-	"imprint-web-common": "1.0.x"
+ dependencies {
+		"imprint-web-common": "1.0.x",
+		// ...
+ }
 ```
 which means that for patch-level updates, the latest will automatically be installed with `npm update` or `npm install`, but any minor or major-level releases need to be upgraded manually.
+
+If we're doing more active development, we might want to simply set our policy as 
+
+```json
+ dependencies {
+		"imprint-web-common": "*",
+		// ...
+ }
+```
+Until we've reached a more stable point.
 
 Evaluation
 ---------- 
@@ -87,12 +98,11 @@ Evaluation
   * Ensures that tags are only committed from `master` branch
   * Updates our versioning standard to use Semantic Versioning, which provides more information & is a common standard
   * Automates the commit/tag/push workflow to make things a little easier
-
+  * Unifies release process between repos, regardless of specific architecture
 
 ### Cons
 
  * Only works if devs follow the rules (i.e. don't just run `git push master`)
- * Doesn't fully address the issue of managing versions for sub-dependencies, like managing which version of `imprint-web-common` is included within the desktop and mobile sites (only gives us handy tags & versions to aid in that process)
  * Current implementation requires double login for deploying branch/tags (annoying)
  * Could result in excessive number of tags (not sure if that really is a problem?)
 
