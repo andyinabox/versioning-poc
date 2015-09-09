@@ -20,13 +20,12 @@ module.exports = function(grunt) {
 	// setup custom tasks
 	grunt.registerTask('build', []);
 	grunt.registerTask('default', ['build']);
-	grunt.registerTask('release-prep', ['checkbranch:master', 'build']);
+	grunt.registerTask('before-release', ['checkbranch:master', 'build']);
+	grunt.registerTask('after-release', []);
 
-	// release task aliases
-	grunt.registerTask('release', ['release-prep', 'bump']);
-	grunt.registerTask('release:patch', ['release-prep', 'bump:patch']);
-	grunt.registerTask('release:minor', ['release-prep', 'bump:minor']);
-	grunt.registerTask('release:major', ['release-prep', 'bump:major']);
-	grunt.registerTask('release:prerelease', ['release-prep', 'bump:prerelease']);
-
+	// run before/after tasks and passthrough to bump task
+	grunt.registerTask('release', 'Imprint release task', function(sub) {
+		var taskName = sub ? 'bump:'+sub : 'bump';
+		grunt.task.run(['before-release', taskName, 'after-release']);
+	});
 }
