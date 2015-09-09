@@ -1,10 +1,10 @@
 module.exports = function(grunt) {
 
 	grunt.initConfig({
-		'imprint-release': {
+		bump: {
 			options: {
 				// keep package.json and bower.json in sync
-				, files: ['package.json', 'bower.json']
+				files: ['package.json', 'bower.json']
 				// commit all files
 				, commitFiles: ['-a']
 				, pushTo: 'origin'
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 	});
 
 	// load tasks
-	grunt.loadNpmTasks('grunt-release');
+	grunt.loadNpmTasks('grunt-bump');
 	grunt.loadNpmTasks('grunt-checkbranch');
 
 	// renaming so that we can add tasks before
