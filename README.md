@@ -3,6 +3,9 @@ Imprint Versioning POC
 
 A quick POC to develop a versioning model for Imprint. 
 
+Overview
+--------
+
 The basic idea here is to replace the command
 
     git push
@@ -15,11 +18,10 @@ whenever you are pushing non-WIP code. This will handle the following tasks:
 
  1. Check to make sure you are in `master` branch
  2. Run any build tasks
- 3. Bumping the version using [semver](http://semver.org/)
+ 3. Bump the version using [semver](http://semver.org/) versioning
  4. Committing code in your working copy
  5. Tagging with the current version
- 6. Duplicate tag into `stable` branch
- 7. Pushing the current branch and tags to GitHub
+ 6. Pushing the current branch and tags to GitHub
 
 Additionally, you can specify what kind of version you are releasing:
 
@@ -47,3 +49,10 @@ will increment the minor-level versioning digit (n.n+1.n)
     # => 1.0.0
 
 will increment the major-level versioning digit (n+1.n.n)
+
+
+Workflow
+--------
+
+
+
