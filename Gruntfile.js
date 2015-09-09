@@ -1,4 +1,4 @@
-module.exports = function(options) {
+module.exports = function(grunt) {
 
 	grunt.initConfig({
 		release: {
