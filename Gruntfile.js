@@ -20,7 +20,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-checkbranch');
 
 
+	grunt.renameTask('release', 'imprint-release');
+
 	grunt.registerTask('build', []);
 	grunt.registerTask('default', ['build']);
+	grunt.registerTask('release', ['checkbranch', 'imprint-release']);
 
 }
