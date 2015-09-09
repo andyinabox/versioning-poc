@@ -72,9 +72,9 @@ The basic workflow would be:
 We can set our policy based on the [NPM semvar spec for consumers](https://www.npmjs.com/package/npm-check-updates). For instance, in the imprint desktop `package.json` we might set our dependency:
 
 ```json
- dependencies {
+ dependencies: {
+ 		// ...
 		"imprint-web-common": "1.0.x",
-		// ...
  }
 ```
 which means that for patch-level updates, the latest will automatically be installed with `npm update` or `npm install`, but any minor or major-level releases need to be upgraded manually.
@@ -82,9 +82,9 @@ which means that for patch-level updates, the latest will automatically be insta
 If we're doing more active development, we might want to simply set our policy as 
 
 ```json
- dependencies {
+ dependencies: {
+ 		// ...
 		"imprint-web-common": "*",
-		// ...
  }
 ```
 Until we've reached a more stable point.
