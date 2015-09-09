@@ -21,15 +21,27 @@ whenever you are pushing non-WIP code. This will handle the following tasks:
 
 Additionally, you can specify what kind of version you are releasing:
 
-    grunt release
-    grunt release:patch
+    # at 0.0.1
+
+    $ grunt release
+    $ grunt release:patch
+
+    # => 0.0.2
 
 will increment the patch-level versioning digit (n.n.n+1)
 
-    grunt release:minor
+    # at 0.0.2
+
+    $ grunt release:minor
+
+    # => 0.2.0
 
 will increment the minor-level versioning digit (n.n+1.n)
 
-    grunt release:major
+    # at 0.2.0
+
+    $ grunt release:major
+
+    # => 1.0.0
 
 will increment the major-level versioning digit (n+1.n.n)
