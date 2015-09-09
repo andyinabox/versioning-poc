@@ -1,9 +1,5 @@
 {
   "name": "versioning-poc",
   "description": "A quick POC to develop a versioning model for Imprint",
-  "version": "0.0.1",
-  "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-release": "~0.13.0"
-  }
+  "version": "0.0.1"
 }
