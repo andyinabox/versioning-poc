@@ -5,11 +5,11 @@ A quick POC to develop a versioning model for Imprint.
 
 The basic idea here is to replace the command
 
-   git push
+    git push
 
 with 
 
-  grunt release
+    grunt release
 
 whenever you are pushing non-WIP code. This will handle the following tasks:
 
