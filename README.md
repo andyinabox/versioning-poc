@@ -1,7 +1,7 @@
 Imprint Versioning POC
 ======================
 
-A quick POC to develop a versioning model for Imprint. Some additionl notes can also be found [on the confluence wiki](https://imprint.atlassian.net/wiki/display/~andydayton/%2378%3A+SPIKE%3A+explicit+control+between+imprint-web-common+version+and+imprint+and+imprint-mobile+releases.
+A quick POC to develop a versioning model for Imprint. Some additionl notes can also be found [on the confluence wiki](https://imprint.atlassian.net/wiki/display/~andydayton/%2378%3A+SPIKE%3A+explicit+control+between+imprint-web-common+version+and+imprint+and+imprint-mobile+releases).
 
 Overview
 --------
@@ -14,7 +14,9 @@ with
 
     grunt release
 
-whenever you are pushing any changes to the `master` branch, in a way that is standardized across our repos. This `grunt release` command handles the following tasks:
+whenever you are pushing any changes to the `master` branch, in a way that is standardized across our repos.
+
+The `grunt release` command handles the following tasks:
 
  1. Check to make sure you are in `master` branch
  2. Run any build tasks
@@ -25,30 +27,34 @@ whenever you are pushing any changes to the `master` branch, in a way that is st
 
 Additionally, you can specify what kind of version you are releasing:
 
-    # at 0.0.1
+```bash
+# at 0.0.1
 
-    $ grunt release
-    
-    # (same as grunt release:patch)
-    # => 0.0.2
+# (same as grunt release:patch)
+$ grunt release
 
-    $ grunt release:minor
+# => 0.0.2
 
-    # => 0.2.0
+$ grunt release:minor
 
-    $ grunt release:premajor
+# => 0.2.0
 
-    # => 1.0.0-rc.0
+$ grunt release:premajor
 
-    $ grunt release:major
+# => 1.0.0-rc.0
+
+$ grunt release:major
 
     # => 1.0.0
+```
 
-There are more options documented in the [`grunt-bump` README](https://github.com/vojtajina/grunt-bump).
+There are more options documented in the [grunt-bump docs](https://github.com/vojtajina/grunt-bump).
 
 
 Workflow
 --------
+
+### Managing Each Repo
 
 Much of the workflow can be the same as it is currently: working in various feature branches and (at least in the case of the desktop) merge into an `integration` branch for QA. This strategy applies exclusively to changes in the `master` branch, with the assumption that `master` = production in all cases.
 
@@ -61,6 +67,16 @@ The basic workflow would be:
  3. Run `grunt release`
  4. Deploy to appropriate env
 
+### Managing Dependencies
+
+We can set our policy based on the [NPM semvar spec for consumers](https://www.npmjs.com/package/npm-check-updates).
+
+For instance, in the imprint desktop `package.json` we might set our dependency:
+
+```json
+	"imprint-web-common": "1.0.x"
+```
+which means that for patch-level updates, the latest will automatically be installed with `npm update` or `npm install`, but any minor or major-level releases need to be upgraded manually.
 
 Evaluation
 ---------- 
