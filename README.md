@@ -5,6 +5,13 @@ A quick POC to develop a versioning model for Imprint. Some additionl notes can 
 
 The Grunt workflow itself is fairly simple, and can be found in `Gruntfile.js` above. It depends upon [grunt-bump](https://github.com/vojtajina/grunt-bump), [grunt-checkbranch](https://github.com/dominykas/grunt-checkbranch), and [grunt-git](https://github.com/rubenv/grunt-git). This repository uses the same process for version management, so you can checkout this repo if you want to test it out.
 
+Installation
+------------
+
+```bash
+npm install
+```
+
 Overview
 --------
 
