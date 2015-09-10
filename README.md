@@ -3,7 +3,7 @@ Imprint Versioning POC
 
 A quick POC to develop a versioning model for Imprint. Some additionl notes can also be found [on the confluence wiki](https://imprint.atlassian.net/wiki/display/~andydayton/%2378%3A+SPIKE%3A+explicit+control+between+imprint-web-common+version+and+imprint+and+imprint-mobile+releases).
 
-The Grunt workflow itself is fairly simple, and can be found in `Gruntfile.js` above. It depends upon [grunt-bump](https://github.com/vojtajina/grunt-bump) and [grunt-checkbranch](https://github.com/dominykas/grunt-checkbranch). This repository uses it to manage versioning, so you can checkout this repo if you want to test it out.
+The Grunt workflow itself is fairly simple, and can be found in `Gruntfile.js` above. It depends upon [grunt-bump](https://github.com/vojtajina/grunt-bump), [grunt-checkbranch](https://github.com/dominykas/grunt-checkbranch), and [grunt-git](https://github.com/rubenv/grunt-git). This repository uses the same process for version management, so you can checkout this repo if you want to test it out.
 
 Overview
 --------
@@ -26,6 +26,7 @@ The `grunt release` command handles the following tasks:
  4. Commit the code in your working copy
  5. Tag with the current version
  6. Push the current branch and tags to GitHub
+ 7. Update the `stable` branch with the current version
 
 Additionally, you can specify what kind of version you are releasing:
 
@@ -71,23 +72,13 @@ The basic workflow would be:
 
 ### Managing Dependencies
 
-We can set our policy based on the [NPM semvar spec for consumers](https://www.npmjs.com/package/npm-check-updates). For instance, in the imprint desktop `package.json` we might set our dependency:
+~~We can set our policy based on the [NPM semvar spec for consumers](https://www.npmjs.com/package/npm-check-updates).~~ Since we are using a git repo rather than an NPM registry for our in-house dependencies, we will have to be more explicit. Since we're maintaining a `stable` branch we can use that to keep track of the latest.
 
 ```json
  dependencies: {
-		"imprint-web-common": "1.0.x",
+		"imprint-web-common": "git@github.com:ImprintDev/imprint-web-common.git#stable",
  }
 ```
-which means that for patch-level updates, the latest will automatically be installed with `npm update` or `npm install`, but any minor or major-level releases need to be upgraded manually.
-
-If we're doing more active development, we might want to simply set our policy as 
-
-```json
- dependencies: {
-		"imprint-web-common": "*",
- }
-```
-Until we've reached a more stable point.
 
 Evaluation
 ---------- 
