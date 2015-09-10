@@ -94,7 +94,7 @@ Evaluation
 ### Cons
 
  * Only works if devs follow the rules (i.e. don't just run `git push master`)
- * Current implementation requires double login for deploying branch/tags (annoying)
+ * Current implementation requires triple login for deploying branch/tags (annoying)
  * Could result in excessive number of tags (not sure if that really is a problem?)
 
 
